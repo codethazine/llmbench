@@ -1,5 +1,6 @@
 
-<header class="navbar bg-base-300">
+<!-- FOOTER -->
+<header class="navbar bg-base-300 mt-auto">
     <div class="flex-1">
         <a href="/" class="btn btn-ghost normal-case text-xl">LLMBench</a>
     </div>
@@ -10,7 +11,28 @@
     </div>
 </header>
 
-<footer class="footer p-10 bg-neutral text-neutral-content">
+<!-- HERO SECTION -->
+<div class="hero min-h-screen bg-base-200">
+    <div class="text-center hero-content">
+        <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">
+                LLMBench
+            </h1> 
+            <p class="mb-5">
+                Open and recurrent LLM models benchmarking.
+            </p> 
+            <div class="flex justify-center">
+                <a href="#bench" class="btn btn-neutral">Check benchamarks</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BENCHMARKS -->
+<!-- FOR EACH MODEL IN MODELS SHOW NAME OF THE MODEL WITH SVELTE -->
+
+<!-- FOOTER -->
+<footer class="footer p-10 bg-neutral text-neutral-content mt-auto">
     <div>
         <span class="footer-title">Services</span> 
         <a href="/" class="link link-hover">Branding</a>
