@@ -30,7 +30,19 @@
 
 <!-- BENCHMARKS -->
 <!-- FOR EACH MODEL IN MODELS SHOW NAME OF THE MODEL WITH SVELTE -->
-
+<div class="min-h-screen" id="bench">
+    {#each ["X", "Y", "Z"] as item (item)}
+        <div class="card shadow-lg compact bg-base-100">
+            <div class="card-body">
+                <h2 class="card-title">{item}</h2> 
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quisquam necessitatibus incidunt ut officiis explicabo inventore.
+                </p>
+            </div>
+        </div>
+    {/each}
+</div>
 <!-- FOOTER -->
 <footer class="footer p-10 bg-neutral text-neutral-content mt-auto">
     <div>
