@@ -1,14 +1,10 @@
 <script>
 	import 'smelte/src/tailwind.css';
-	import { Button } from "smelte";
-
-	export let name;
+	import NavBar from './components/NavBar.svelte';
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<Button color="primary">Click me</Button>
+	<NavBar />
 </main>
 
 <style>
