@@ -20,7 +20,8 @@
         <h1 class="mb-5 text-5xl font-bold">LLMBench</h1> 
         <p class="mb-5">Open and recurrent LLM models benchmarking.</p> 
         <div class="flex justify-center">
-          <a href="#bench" class="btn btn-neutral">Check benchamarks</a>
+          <a href="#bench" class="btn btn-neutral">Check benchmarks</a>
+          <a href="https://arxiv.org/abs/2307.09009" target="_blank" class="btn btn-primary ml-2">Read drift paper</a>
         </div>
       </div>
     </div>
@@ -75,8 +76,8 @@ export default {
     return {
       items: [
         { name: "GPT 3.5 Turbo", base_model: "gpt-3.5-turbo", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
-        /*{ name: "GPT 4", base_model: "gpt-3.5-turbo", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
-        { name: "Claude 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },*/
+        { name: "GPT 4", base_model: "gpt-4", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        /*{ name: "Claude 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },*/
       ]
     }
   }
