@@ -11,7 +11,7 @@ let accounts = { mnemonic: "your mnemonic here", }
 
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
-  //2) select the default network "gnosis" or "chiado"
+  //2) select the default network "gnosis" or "chiado"npx hardhat run scripts/deploy.ts --network chiado
   defaultNetwork: "gnosis",
   networks: {
     hardhat: {

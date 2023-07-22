@@ -1,27 +1,33 @@
-import { ethers } from "hardhat";
+import { ethers, run } from 'hardhat';
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = ethers.parseEther("0.001");
-
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
+  // get the deployer signers
+  const [deployer] = await ethers.getSigners();
 
   console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
+    'Deploying contracts with the account:',
+    deployer.address
   );
+
+  console.log('Account balance:', (await deployer.getBalance()).toString());
+
+  // Get the Contract Factory
+  const LLMBenchStore = await ethers.getContractFactory('LLMBenchStore');
+  
+  // Deploy the contract
+  const llmbenchstore = await LLMBenchStore.deploy();
+
+  console.log('LLMBenchStore address:', llmbenchstore.address);
+
+  // Wait for the contract to be mined
+  await llmbenchstore.deployed();
+
+  console.log('LLMBenchStore deployed to:', llmbenchstore.address);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
