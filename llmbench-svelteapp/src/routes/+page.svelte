@@ -1,5 +1,13 @@
+<script>
+    import ModelBenchmark from './../components/ModelBenchmark.svelte';
 
-<!-- FOOTER -->
+    let items = [
+        { name: "GPT 3", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        { name: "GPT 4", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        { name: "Claude 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },]
+</script>
+
+<!-- HEADER -->
 <header class="navbar bg-base-300 mt-auto">
     <div class="flex-1">
         <a href="/" class="btn btn-ghost normal-case text-xl">LLMBench</a>
@@ -31,14 +39,12 @@
 <!-- BENCHMARKS -->
 <!-- FOR EACH MODEL IN MODELS SHOW NAME OF THE MODEL WITH SVELTE -->
 <div class="min-h-screen" id="bench">
-    {#each ["X", "Y", "Z"] as item (item)}
+    {#each items as item (item)}
         <div class="card shadow-lg compact bg-base-100">
             <div class="card-body">
-                <h2 class="card-title">{item}</h2> 
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Quisquam necessitatibus incidunt ut officiis explicabo inventore.
-                </p>
+                <h2 class="card-title">{item.name}</h2> 
+                <p>{item.description}</p>
+                <ModelBenchmark modelId={item.name} modelName={item.name} />
             </div>
         </div>
     {/each}
