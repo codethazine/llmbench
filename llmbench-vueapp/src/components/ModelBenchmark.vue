@@ -28,8 +28,10 @@
         </label>
       </div>
 
-      <div class="mt-5">
-        <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" />
+      <div class="mt-5 flex flex-col items-center">
+        <div class="w-full h-full sm:w-3/4 sm:h-3/4 lg:w-1/2 lg:h-1/2">
+          <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" />
+        </div>
       </div>
     </div>
   </div>

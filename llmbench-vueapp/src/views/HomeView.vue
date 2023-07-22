@@ -75,10 +75,15 @@ export default {
     return {
       items: [
         { name: "GPT 3.5", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
-        { name: "GPT 4", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
-        { name: "Claude 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        /*{ name: "GPT 4", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        { name: "Claude 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },*/
       ]
     }
   }
 }
 </script>
+<style scoped>
+.navbar, .hero, .card, .footer {
+    color: white;
+  }
+</style>
