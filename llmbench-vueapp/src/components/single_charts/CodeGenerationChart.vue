@@ -1,6 +1,5 @@
 <template>
     <div>
-      {{ props.modelData }}
       <canvas id="codeGenerationChart"></canvas>
     </div>
   </template>
@@ -13,7 +12,7 @@
   
   export default {
     name: 'CodeGenerationChart',
-    props: ['fromMonth', 'toMonth', 'modelData', 'modelId'],
+    props: ['fromMonth', 'toMonth', 'modelData'],
     setup() {
       const chart = ref(null);
       
@@ -23,13 +22,13 @@
           data: {
             labels: ['Directly Executable', 'Verbosity', 'Overlap'],
             datasets: [{
-              label: this.props.fromMonth,
+              label: 'March 2023',
               data: [35, 79, 70],
               backgroundColor: 'rgba(255, 206, 86, 0.2)',
               borderColor: 'rgba(255, 206, 86, 1)',
               borderWidth: 1
             }, {
-              label: this.props.toMonth,
+              label: 'June 2023',
               data: [48, 58, 60],
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
               borderColor: 'rgba(54, 162, 235, 1)',
