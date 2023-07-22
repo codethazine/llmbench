@@ -52,7 +52,8 @@
 import { ref, onMounted, toRefs, watch, computed } from 'vue'
 import { Chart, BarController, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
-import importedModelData from '@/assets/total_hist_eval.json'
+import importedModelData from '@/assets/total_hist_eval.json' 
+// TODO: import model data from Gnosis Chain - faucet currently not working
 
 Chart.register(BarController, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
