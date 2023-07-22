@@ -28,19 +28,19 @@
         </label>
       </div> <!-- end flex container -->
       <div class="mt-5 flex flex-col sm:flex-row justify-around items-center">
-        <div class="w-full h-full sm:w-1/3 sm:h-3/4 lg:w-1/3 lg:h-1/2 mb-4 sm:mb-0">
+        <div class="w-full h-full sm:w-1/3 lg:w-1/3 mb-4 sm:mb-0">
             <div>
-                <canvas id="accChart"></canvas>
+                <canvas :id="'accChart'+modelId"></canvas>
             </div>
         </div>
-        <div class="w-full h-full sm:w-1/3 sm:h-3/4 lg:w-1/3 lg:h-1/2 mb-4 sm:mb-0">
+        <div class="w-full h-full sm:w-1/3 lg:w-1/3 mb-4 sm:mb-0">
             <div>
-                <canvas id="verbChart"></canvas>
+                <canvas :id="'verbChart'+modelId"></canvas>
             </div>
         </div>
-        <div class="w-full h-full sm:w-1/3 sm:h-3/4 lg:w-1/3 lg:h-1/2">
+        <div class="w-full h-full sm:w-1/3 lg:w-1/3 mb-4 sm:mb-0">
             <div>
-                <canvas id="overlapChart"></canvas>
+                <canvas :id="'overlapChart'+modelId"></canvas>
             </div>
         </div>
     </div>
@@ -139,7 +139,7 @@ export default {
         accChart.value.destroy();
       }
       
-      accChart.value = new Chart(document.getElementById('accChart'), {
+      accChart.value = new Chart(document.getElementById('accChart'+props.modelId), {
         type: 'bar',
         data: {
           labels: [chartLabels.value[0]],
@@ -172,7 +172,7 @@ export default {
         verbChart.value.destroy();
       }
       
-      verbChart.value = new Chart(document.getElementById('verbChart'), {
+      verbChart.value = new Chart(document.getElementById('verbChart'+props.modelId), {
         type: 'bar',
         data: {
           labels: [chartLabels.value[1]],
@@ -205,7 +205,7 @@ export default {
         overlapChart.value.destroy();
       }
       
-      overlapChart.value = new Chart(document.getElementById('overlapChart'), {
+      overlapChart.value = new Chart(document.getElementById('overlapChart'+props.modelId), {
         type: 'bar',
         data: {
           labels: [chartLabels.value[2]],
@@ -253,3 +253,5 @@ export default {
   }
 }
 </script>
+<style scoped>
+</style>

@@ -87,4 +87,12 @@ export default {
 .navbar, .hero, .card, .footer {
     color: white;
   }
+
+.hero {
+  background-image: url('~@/assets/sd-bgneon.png');
+  background-size: cover;
+  background-position: center center;
+  /* change opacity to adjust overlay intensity */
+  background-color: rgba(0, 0, 0, 0.5);
+}
 </style>
