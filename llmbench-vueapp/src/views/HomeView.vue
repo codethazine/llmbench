@@ -29,7 +29,7 @@
 
   <!-- BENCHMARKS -->
   <!-- FOR EACH MODEL IN MODELS SHOW NAME OF THE MODEL WITH VUE -->
-  <div class="min-h-screen mb-20" id="bench">
+  <div class="min-h-screen mb-20 mt-10" id="bench">
     <div 
       class="card compact bg-base-100" 
       v-for="(item, index) in items" 
