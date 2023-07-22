@@ -8,25 +8,25 @@
     </div>
     
     <div v-if="activeTab === 'drift'" class="mb-4">
-      <label class="input input-bordered w-1/4">
-        <select v-model="selectedOption">
-          <option>Solving Math Problems</option>
-          <option>Answering Sensitive Questions</option>
-          <option>Code Generation</option>
-          <option>Visual Reasoning</option>
-        </select>
-      </label>
+      <div class="flex items-center justify-center">
+        <label class="input input-bordered w-1/4">
+          <select v-model="selectedOption" class="w-full bg-transparent text-white rounded focus:outline-none py-3 px-4 mb-3 leading-tight ">
+            <option>Solving Math Problems</option>
+            <option>Answering Sensitive Questions</option>
+            <option>Code Generation</option>
+            <option>Visual Reasoning</option>
+          </select>
+        </label>
 
-      <div class="flex items-center">
         <label class="label ml-5">
-          <span>From</span>
-          <input type="month" class="input input-bordered" v-model="fromMonth">
+          <span class="mr-2">From</span>
+          <input type="month" class="input input-bordered focus:outline-none" v-model="fromMonth">
         </label>
         <label class="label ml-5">
-          <span>To</span>
-          <input type="month" class="input input-bordered" v-model="toMonth">
+          <span class="mr-2">To</span>
+          <input type="month" class="input input-bordered focus:outline-none" v-model="toMonth">
         </label>
-      </div>
+      </div> <!-- end flex container -->
 
       <div class="mt-5 flex flex-col items-center">
         <div class="w-full h-full sm:w-3/4 sm:h-3/4 lg:w-1/2 lg:h-1/2">

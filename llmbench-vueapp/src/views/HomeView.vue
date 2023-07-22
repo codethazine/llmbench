@@ -30,7 +30,7 @@
   <!-- FOR EACH MODEL IN MODELS SHOW NAME OF THE MODEL WITH VUE -->
   <div class="min-h-screen" id="bench">
     <div 
-      class="card shadow-lg compact bg-base-100" 
+      class="card compact bg-base-100" 
       v-for="(item, index) in items" 
       :key="index">
       <div class="card-body">
