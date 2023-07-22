@@ -29,7 +29,7 @@
 
   <!-- BENCHMARKS -->
   <!-- FOR EACH MODEL IN MODELS SHOW NAME OF THE MODEL WITH VUE -->
-  <div class="min-h-screen" id="bench">
+  <div class="min-h-screen mb-20" id="bench">
     <div 
       class="card compact bg-base-100" 
       v-for="(item, index) in items" 
@@ -44,10 +44,8 @@
   <footer class="footer p-10 bg-neutral text-neutral-content mt-auto">
     <div>
       <span class="footer-title">Services</span> 
-      <a href="/" class="link link-hover">Branding</a>
-      <a href="/" class="link link-hover">Design</a>
-      <a href="/" class="link link-hover">Marketing</a>
-      <a href="/" class="link link-hover">Advertisement</a>
+      <a href="/" class="link link-hover">Request new benchmark</a>
+      <a href="/" class="link link-hover">Request new model</a>
     </div> 
     <div>
       <span class="footer-title">Company</span> 
