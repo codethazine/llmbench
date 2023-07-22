@@ -27,10 +27,9 @@
           <input type="month" class="input input-bordered focus:outline-none" v-model="toMonth">
         </label>
       </div> <!-- end flex container -->
-
       <div class="mt-5 flex flex-col items-center">
         <div class="w-full h-full sm:w-3/4 sm:h-3/4 lg:w-1/2 lg:h-1/2">
-          <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" :model-data="modelData" />
+          <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" :model-data="modelData" :model-id="modelId"/>
         </div>
       </div>
     </div>
@@ -44,13 +43,19 @@ import SensitiveQuestionChart from './single_charts/SensitiveQuestionChart'
 import CodeGenerationChart from './single_charts/CodeGenerationChart'
 import VisualReasoningChart from './single_charts/VisualReasoningChart'
 
+import modelData from '@/assets/total_hist_eval.json'
+
 export default {
   name: 'ModelBenchmark',
-  props: ['modelName'],
+  props: ['modelName', 'modelId'],
   data() {
     return {
-      modelData: null,
+      modelData: {}
     }
+  },
+  mounted() {
+    // Assign the imported JSON data to the component's jsonData
+    this.modelData = modelData;
   },
   setup() {
     const activeTab = ref('drift');
@@ -75,11 +80,6 @@ export default {
         default:
           return null;
       }
-    })
-
-    onMounted(async () => {
-      const response = await fetch('/public/total_hist_eval.json');
-      this.modelData = await response.json();
     })
 
     return {

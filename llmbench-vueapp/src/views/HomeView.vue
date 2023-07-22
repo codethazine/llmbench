@@ -34,7 +34,7 @@
       v-for="(item, index) in items" 
       :key="index">
       <div class="card-body">
-        <model-benchmark :model-id="item.name" :model-name="item.name" />
+        <model-benchmark :model-id="item.base_model" :model-name="item.name" />
       </div>
     </div>
   </div>
@@ -74,8 +74,8 @@ export default {
   data() {
     return {
       items: [
-        { name: "GPT 3.5", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
-        /*{ name: "GPT 4", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        { name: "GPT 3.5 Turbo", base_model: "gpt-3.5-turbo", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
+        /*{ name: "GPT 4", base_model: "gpt-3.5-turbo", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },
         { name: "Claude 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore." },*/
       ]
     }
