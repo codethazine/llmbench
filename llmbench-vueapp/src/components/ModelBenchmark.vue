@@ -71,6 +71,22 @@ export default {
       const date = new Date(dateString);
       return date.toLocaleString('default', { month: 'long' });
     }
+
+    const chartLabels = computed(() => {
+      switch(selectedOption.value) {
+        case 'Solving Math Problems':
+          return ['Accuracy', 'Verbosity', 'Overlap'];
+        case 'Answering Sensitive Questions':
+          return ['Answer Rate', 'Verbosity', 'Overlap'];
+        case 'Code Generation':
+          return ['Directly Executable', 'Verbosity', 'Overlap'];
+        case 'Visual Reasoning':
+          return ['Exact Match', 'Verbosity', 'Overlap'];
+        default:
+          return ['Accuracy', 'Verbosity', 'Overlap'];
+      }
+    });
+
     const createChart = () => {
       if (chart.value) {
         chart.value.destroy();

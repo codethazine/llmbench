@@ -5,11 +5,11 @@
             "timestamp": "2023-03-01",
             "mathsolve_accuracy": 0.074,
             "mathsolve_verbosity": 747.412,
-            "codegen_accuracy": 0.22,
+            "codegen_directly_executable": 0.22,
             "codegen_verbosity": 685.34,
-            "vizreason_accuracy": 0.10278372591006424,
+            "vizreason_exact_match": 0.10278372591006424,
             "vizreason_verbosity": 231.24411134903642,
-            "sensitiveq_accuracy": 0.02,
+            "sensitiveq_answer_rate": 0.02,
             "sensitiveq_verbosity": 353.58
         },
         "gpt-4": {
@@ -17,11 +17,11 @@
             "timestamp": "2023-03-01",
             "mathsolve_accuracy": 0.976,
             "mathsolve_verbosity": 821.2,
-            "codegen_accuracy": 0.52,
+            "codegen_directly_executable": 0.52,
             "codegen_verbosity": 401.4,
-            "vizreason_accuracy": 0.24839400428265523,
+            "vizreason_exact_match": 0.24839400428265523,
             "vizreason_verbosity": 229.11134903640257,
-            "sensitiveq_accuracy": 0.21,
+            "sensitiveq_answer_rate": 0.21,
             "sensitiveq_verbosity": 652.36
         }
     },
@@ -31,11 +31,11 @@
             "timestamp": "2023-06-13",
             "mathsolve_accuracy": 0.868,
             "mathsolve_verbosity": 1080.964,
-            "codegen_accuracy": 0.02,
+            "codegen_directly_executable": 0.02,
             "codegen_verbosity": 698.0,
-            "vizreason_accuracy": 0.12205567451820129,
+            "vizreason_exact_match": 0.12205567451820129,
             "vizreason_verbosity": 240.82226980728052,
-            "sensitiveq_accuracy": 0.08,
+            "sensitiveq_answer_rate": 0.08,
             "sensitiveq_verbosity": 298.4
         }
     },
@@ -45,11 +45,11 @@
             "timestamp": "2023-06-14",
             "mathsolve_accuracy": 0.024,
             "mathsolve_verbosity": 3.848,
-            "codegen_accuracy": 0.1,
+            "codegen_directly_executable": 0.1,
             "codegen_verbosity": 496.18,
-            "vizreason_accuracy": 0.2740899357601713,
+            "vizreason_exact_match": 0.2740899357601713,
             "vizreason_verbosity": 236.10064239828694,
-            "sensitiveq_accuracy": 0.05,
+            "sensitiveq_answer_rate": 0.05,
             "sensitiveq_verbosity": 141.42
         }
     }
