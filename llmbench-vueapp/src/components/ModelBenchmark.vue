@@ -27,15 +27,23 @@
           <input type="month" class="input input-bordered focus:outline-none" v-model="toMonth">
         </label>
       </div> <!-- end flex container -->
-      <div class="mt-5 flex flex-col items-center">
-        <div class="w-full h-full sm:w-3/4 sm:h-3/4 lg:w-1/2 lg:h-1/2">
-          <div>
-            <canvas id="accChart"></canvas>
-            <canvas id="verbChart"></canvas>
-            <canvas id="overlapChart"></canvas>
-          </div>
+      <div class="mt-5 flex flex-col sm:flex-row justify-around items-center">
+        <div class="w-full h-full sm:w-1/3 sm:h-3/4 lg:w-1/3 lg:h-1/2 mb-4 sm:mb-0">
+            <div>
+                <canvas id="accChart"></canvas>
+            </div>
         </div>
-      </div>
+        <div class="w-full h-full sm:w-1/3 sm:h-3/4 lg:w-1/3 lg:h-1/2 mb-4 sm:mb-0">
+            <div>
+                <canvas id="verbChart"></canvas>
+            </div>
+        </div>
+        <div class="w-full h-full sm:w-1/3 sm:h-3/4 lg:w-1/3 lg:h-1/2">
+            <div>
+                <canvas id="overlapChart"></canvas>
+            </div>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -71,19 +79,6 @@ export default {
       return date.toLocaleString('default', { month: 'long' });
     }
 
-    // fun to calculate overlap
-    const calculateOverlap = (fromMonth, toMonth) => {
-      const fromMonthData = modelData.value[fromMonth][props.modelId];
-      const toMonthData = modelData.value[toMonth][props.modelId];
-
-      const fromMonthKeys = Object.keys(fromMonthData);
-      const toMonthKeys = Object.keys(toMonthData);
-
-      const overlap = fromMonthKeys.filter(key => toMonthKeys.includes(key));
-
-      return overlap.length;
-    }
-
     const chartLabels = computed(() => {
       switch(selectedOption.value) {
         case 'Solving Math Problems':
@@ -110,37 +105,34 @@ export default {
           accuracy_to = modelData.value[toMonth.value][props.modelId]['mathsolve_accuracy'];
           verbosity_from = modelData.value[fromMonth.value][props.modelId]['mathsolve_verbosity'];
           verbosity_to = modelData.value[toMonth.value][props.modelId]['mathsolve_verbosity'];
-          overlap = 1 // calculateOverlap(fromMonth.value, toMonth.value);
+          overlap = (accuracy_from + accuracy_to) / 2
+          console.log(overlap)
           return [accuracy_from, accuracy_to, verbosity_from, verbosity_to, overlap];
         case 'Answering Sensitive Questions':
           answer_rate_from = modelData.value[fromMonth.value][props.modelId]['sensitiveq_answer_rate'];
           answer_rate_to = modelData.value[toMonth.value][props.modelId]['sensitiveq_answer_rate'];
           verbosity_from = modelData.value[fromMonth.value][props.modelId]['sensitiveq_verbosity'];
           verbosity_to = modelData.value[toMonth.value][props.modelId]['sensitiveq_verbosity'];
-          overlap = 1 // calculateOverlap(fromMonth.value, toMonth.value);
+          overlap = (answer_rate_from + answer_rate_to) / 2
           return [answer_rate_from, answer_rate_to, verbosity_from, verbosity_to, overlap];
         case 'Code Generation':
           directly_executable_from = modelData.value[fromMonth.value][props.modelId]['codegen_directly_executable'];
           directly_executable_to = modelData.value[toMonth.value][props.modelId]['codegen_directly_executable'];
           verbosity_from = modelData.value[fromMonth.value][props.modelId]['codegen_verbosity'];
           verbosity_to = modelData.value[toMonth.value][props.modelId]['codegen_verbosity'];
-          overlap = 1 // calculateOverlap(fromMonth.value, toMonth.value);
+          overlap = (directly_executable_from + directly_executable_to) / 2
           return [directly_executable_from, directly_executable_to, verbosity_from, verbosity_to, overlap];
         case 'Visual Reasoning':
           exact_match_from = modelData.value[fromMonth.value][props.modelId]['vizreason_exact_match'];
           exact_match_to = modelData.value[toMonth.value][props.modelId]['vizreason_exact_match'];
           verbosity_from = modelData.value[fromMonth.value][props.modelId]['vizreason_verbosity'];
           verbosity_to = modelData.value[toMonth.value][props.modelId]['vizreason_verbosity'];
-          overlap = 1 // calculateOverlap(fromMonth.value, toMonth.value);
+          overlap = (exact_match_from + exact_match_to) / 2
           return [exact_match_from, exact_match_to, verbosity_from, verbosity_to, overlap];
         default:
           return ['Accuracy', 'Verbosity', 'Overlap'];
       }
     });
-
-    console.log(chartLabels.value[0])
-    console.log(chartData.value[0])
-    console.log(chartData.value[1])
 
     const createAccChart = () => {
       if (accChart.value) {
@@ -218,8 +210,8 @@ export default {
         data: {
           labels: [chartLabels.value[2]],
           datasets: [{
-            label: getMonthName(toMonth.value),
-            data: [chartData.value[5]], // Update this data depending on your modelData
+            label: "overlap rate",
+            data: [chartData.value[4]], // Update this data depending on your modelData
             backgroundColor: 'rgba(153, 102, 255, 0.2)',
             borderColor: 'rgba(153, 102, 255, 1)',
             borderWidth: 1
