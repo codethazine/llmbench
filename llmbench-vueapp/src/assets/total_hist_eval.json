@@ -1,5 +1,5 @@
 {
-    "2023-03-01": {
+    "2023-03": {
         "gpt-3.5-turbo": {
             "model": "openaichat/gpt-3.5-turbo-0301",
             "timestamp": "2023-03-01",
@@ -25,7 +25,7 @@
             "sensitiveq_verbosity": 652.36
         }
     },
-    "2023-06-13": {
+    "2023-06": {
         "gpt-3.5-turbo": {
             "model": "openaichat/gpt-3.5-turbo-0613",
             "timestamp": "2023-06-13",
@@ -37,9 +37,7 @@
             "vizreason_verbosity": 240.82226980728052,
             "sensitiveq_answer_rate": 0.08,
             "sensitiveq_verbosity": 298.4
-        }
-    },
-    "2023-06-14": {
+        }, 
         "gpt-4": {
             "model": "openaichat/gpt-4-0613",
             "timestamp": "2023-06-14",
