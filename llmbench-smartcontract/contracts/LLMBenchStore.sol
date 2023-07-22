@@ -2,7 +2,9 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 contract LLMBenchStore {
-    
+
+    address public owner;
+
     struct ModelData {
         string model;
         string timestamp;
@@ -17,8 +19,13 @@ contract LLMBenchStore {
     }
     
     mapping(string => mapping(string => ModelData)) public modelData;
+
+    constructor() {
+        owner = msg.sender;
+    }
     
     function storeModelData(string memory monthYear, string memory modelName, ModelData memory newModelData) public {
+        require(msg.sender == owner, "Only the owner can store data.");
         modelData[monthYear][modelName] = newModelData;
     }
     
