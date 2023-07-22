@@ -1,15 +1,15 @@
 <template>
   <div class="h-full p-5">
     <h1 class="text-4xl font-bold mb-4">{{ modelName }}</h1>
-    <div class="mb-4">
-      <button @click="setActiveTab('drift')" class="btn btn-primary mr-2">{{ 'Drift' }}</button>
-      <button disabled class="btn btn-outline btn-accent">{{ 'Performance (Coming Soon)' }}</button>
-      <button disabled class="btn btn-outline btn-accent ml-2">{{ 'Speed (Coming Soon)' }}</button>
+    <div class="mb-4 flex flex-wrap space-x-2 justify-center">
+      <button @click="setActiveTab('drift')" class="btn btn-primary w-full sm:w-auto">{{ 'Drift' }}</button>
+      <button disabled class="btn btn-outline btn-accent w-full sm:w-auto mt-2 sm:mt-0">{{ 'Performance (Coming Soon)' }}</button>
+      <button disabled class="btn btn-outline btn-accent w-full sm:w-auto mt-2 sm:mt-0">{{ 'Speed (Coming Soon)' }}</button>
     </div>
     
     <div v-if="activeTab === 'drift'" class="mb-4">
-      <div class="flex items-center justify-center">
-        <label class="input input-bordered w-1/4">
+      <div class="flex flex-wrap items-center justify-center space-x-2">
+        <label class="input input-bordered w-full sm:w-1/4 mt-2">
           <select v-model="selectedOption" class="w-full bg-transparent text-white rounded focus:outline-none py-3 px-4 mb-3 leading-tight ">
             <option>Solving Math Problems</option>
             <option>Answering Sensitive Questions</option>
@@ -18,11 +18,11 @@
           </select>
         </label>
 
-        <label class="label ml-5">
+        <label class="label w-full sm:w-auto mt-2 ml-0 sm:ml-5">
           <span class="mr-2">From</span>
           <input type="month" class="input input-bordered focus:outline-none" v-model="fromMonth">
         </label>
-        <label class="label ml-5">
+        <label class="label w-full sm:w-auto mt-2 ml-0 sm:ml-5">
           <span class="mr-2">To</span>
           <input type="month" class="input input-bordered focus:outline-none" v-model="toMonth">
         </label>
