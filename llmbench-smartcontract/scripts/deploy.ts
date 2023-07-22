@@ -9,7 +9,10 @@ async function main() {
     deployer.address
   );
 
-  console.log('Account balance:', (await deployer.getBalance()).toString());
+  // Get provider from ethers
+  const provider = ethers.provider;
+
+  console.log('Account balance:', (await provider.getBalance(deployer.address)).toString());
 
   // Get the Contract Factory
   const LLMBenchStore = await ethers.getContractFactory('LLMBenchStore');
