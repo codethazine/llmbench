@@ -30,7 +30,7 @@
 
       <div class="mt-5 flex flex-col items-center">
         <div class="w-full h-full sm:w-3/4 sm:h-3/4 lg:w-1/2 lg:h-1/2">
-          <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" />
+          <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" :model-data="modelData" />
         </div>
       </div>
     </div>
@@ -38,15 +38,20 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
-import MathProblemChart from './MathProblemChart'
-import SensitiveQuestionChart from './SensitiveQuestionChart'
-import CodeGenerationChart from './CodeGenerationChart'
-import VisualReasoningChart from './VisualReasoningChart'
+import { ref, computed, onMounted } from 'vue'
+import MathProblemChart from './single_charts/MathProblemChart'
+import SensitiveQuestionChart from './single_charts/SensitiveQuestionChart'
+import CodeGenerationChart from './single_charts/CodeGenerationChart'
+import VisualReasoningChart from './single_charts/VisualReasoningChart'
 
 export default {
   name: 'ModelBenchmark',
   props: ['modelName'],
+  data() {
+    return {
+      modelData: null,
+    }
+  },
   setup() {
     const activeTab = ref('drift');
     const selectedOption = ref('Solving Math Problems');
@@ -70,6 +75,11 @@ export default {
         default:
           return null;
       }
+    })
+
+    onMounted(async () => {
+      const response = await fetch('/public/total_hist_eval.json');
+      this.modelData = await response.json();
     })
 
     return {

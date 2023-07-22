@@ -1,6 +1,6 @@
 <template>
     <div>
-      <canvas id="sensitiveQuestionChart"></canvas>
+      <canvas id="visualReasoningChart"></canvas>
     </div>
   </template>
   
@@ -11,27 +11,27 @@
   Chart.register(BarController, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
   
   export default {
-    name: 'SensitiveQuestionChart',
-    props: ['fromMonth', 'toMonth'],
+    name: 'VisualReasoningChart',
+    props: ['fromMonth', 'toMonth', 'modelData'],
     setup() {
       const chart = ref(null);
       
       onMounted(() => {
-        chart.value = new Chart(document.getElementById('sensitiveQuestionChart'), {
+        chart.value = new Chart(document.getElementById('visualReasoningChart'), {
           type: 'bar',
           data: {
-            labels: ['Answer Rate', 'Verbosity', 'Overlap'],
+            labels: ['Exact Match', 'Verbosity', 'Overlap'],
             datasets: [{
               label: 'March 2023',
-              data: [45, 59, 65],
-              backgroundColor: 'rgba(153, 102, 255, 0.2)',
-              borderColor: 'rgba(153, 102, 255, 1)',
+              data: [50, 69, 75],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1
             }, {
               label: 'June 2023',
-              data: [38, 68, 55],
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
+              data: [38, 48, 55],
+              backgroundColor: 'rgba(255, 159, 64, 0.2)',
+              borderColor: 'rgba(255, 159, 64, 1)',
               borderWidth: 1
             }]
           },

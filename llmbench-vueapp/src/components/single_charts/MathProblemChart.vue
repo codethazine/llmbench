@@ -1,6 +1,6 @@
 <template>
     <div>
-      <canvas id="codeGenerationChart"></canvas>
+      <canvas id="mathProblemChart"></canvas>
     </div>
   </template>
   
@@ -11,27 +11,27 @@
   Chart.register(BarController, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
   
   export default {
-    name: 'CodeGenerationChart',
-    props: ['fromMonth', 'toMonth'],
+    name: 'MathProblemChart',
+    props: ['fromMonth', 'toMonth', 'modelData'],
     setup() {
       const chart = ref(null);
       
       onMounted(() => {
-        chart.value = new Chart(document.getElementById('codeGenerationChart'), {
+        chart.value = new Chart(document.getElementById('mathProblemChart'), {
           type: 'bar',
           data: {
-            labels: ['Directly Executable', 'Verbosity', 'Overlap'],
+            labels: ['Accuracy', 'Verbosity', 'Overlap'],
             datasets: [{
               label: 'March 2023',
-              data: [35, 79, 70],
-              backgroundColor: 'rgba(255, 206, 86, 0.2)',
-              borderColor: 'rgba(255, 206, 86, 1)',
+              data: [65, 59, 80],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1
             }, {
               label: 'June 2023',
-              data: [48, 58, 60],
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
+              data: [28, 48, 40],
+              backgroundColor: 'rgba(153, 102, 255, 0.2)',
+              borderColor: 'rgba(153, 102, 255, 1)',
               borderWidth: 1
             }]
           },
