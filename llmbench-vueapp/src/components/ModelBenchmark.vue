@@ -29,7 +29,9 @@
       </div> <!-- end flex container -->
       <div class="mt-5 flex flex-col items-center">
         <div class="w-full h-full sm:w-3/4 sm:h-3/4 lg:w-1/2 lg:h-1/2">
-          <component :is="chartComponent" :from-month="fromMonth" :to-month="toMonth" :model-data="modelData" :model-id="modelId"/>
+          <div>
+            <canvas id="benchmarkChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
@@ -37,50 +39,73 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
-import MathProblemChart from './single_charts/MathProblemChart'
-import SensitiveQuestionChart from './single_charts/SensitiveQuestionChart'
-import CodeGenerationChart from './single_charts/CodeGenerationChart'
-import VisualReasoningChart from './single_charts/VisualReasoningChart'
+import { ref, onMounted, toRefs, watch, computed } from 'vue'
+import { Chart, BarController, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
-import modelData from '@/assets/total_hist_eval.json'
+import importedModelData from '@/assets/total_hist_eval.json'
+
+Chart.register(BarController, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default {
   name: 'ModelBenchmark',
   props: ['modelName', 'modelId'],
-  data() {
-    return {
-      modelData: {}
-    }
-  },
-  mounted() {
-    // Assign the imported JSON data to the component's jsonData
-    this.modelData = modelData;
-  },
-  setup() {
+  setup(props) {
+    const modelData = ref(importedModelData);
+
     const activeTab = ref('drift');
     const selectedOption = ref('Solving Math Problems');
     const fromMonth = ref('2023-03');
     const toMonth = ref('2023-06');
-    
+    const chart = ref(null);
+
+    console.log(modelData.value)
+    console.log(props.modelName)
+    console.log(props.modelId)
+
+
     const setActiveTab = (tabName) => {
       activeTab.value = tabName;
     }
 
-    const chartComponent = computed(() => {
-      switch (selectedOption.value) {
-        case 'Solving Math Problems':
-          return MathProblemChart;
-        case 'Answering Sensitive Questions':
-          return SensitiveQuestionChart;
-        case 'Code Generation':
-          return CodeGenerationChart;
-        case 'Visual Reasoning':
-          return VisualReasoningChart;
-        default:
-          return null;
+    const getMonthName = (dateString) => {
+      const date = new Date(dateString);
+      return date.toLocaleString('default', { month: 'long' });
+    }
+    const createChart = () => {
+      if (chart.value) {
+        chart.value.destroy();
       }
-    })
+      
+      chart.value = new Chart(document.getElementById('benchmarkChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Accuracy', 'Verbosity', 'Overlap'],
+          datasets: [{
+            label: getMonthName(fromMonth.value),
+            data: [65, 59, 80], // Update this data depending on your modelData
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }, {
+            label: getMonthName(toMonth.value),
+            data: [28, 48, 40], // Update this data depending on your modelData
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    };
+
+    onMounted(createChart);
+    watch([fromMonth, toMonth, selectedOption], createChart); // Recreate the chart when fromMonth, toMonth, or selectedOption changes
 
     return {
       activeTab,
@@ -88,7 +113,7 @@ export default {
       fromMonth,
       toMonth,
       setActiveTab,
-      chartComponent
+      chart
     }
   }
 }
