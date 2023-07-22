@@ -1,5 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 //https://hardhat.org/hardhat-runner/docs/config#json-rpc-based-networks
 
@@ -7,7 +9,7 @@ import "@nomicfoundation/hardhat-toolbox";
 //Read more: https://hardhat.org/hardhat-runner/docs/config#hd-wallet-config
 //1) You can configure private keys or mnemonic:
 //let accounts = ["your private key here"]
-let accounts = { mnemonic: "your mnemonic here", }
+let accounts = { mnemonic: process.env.MNEMONIC, }
 
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
@@ -54,8 +56,8 @@ const config: HardhatUserConfig = {
     apiKey: {
       //4) Insert your Gnosisscan API key
       //blockscout explorer verification does not require keys
-      chiado: "your key",
-      gnosis: "your key",
+      chiado: process.env.CHIADO_API_KEY || "",
+      gnosis: process.env.GNOSIS_API_KEY || "",
     },
   }
 };
