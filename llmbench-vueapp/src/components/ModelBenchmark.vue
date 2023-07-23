@@ -20,11 +20,11 @@
 
         <label class="label w-full sm:w-auto mt-2 ml-0 sm:ml-5">
           <span class="mr-2">From</span>
-          <input type="month" class="input input-bordered focus:outline-none" v-model="fromMonth">
+          <input type="month" class="input input-bordered focus:outline-none" v-model="fromMonth" disabled>
         </label>
         <label class="label w-full sm:w-auto mt-2 ml-0 sm:ml-5">
           <span class="mr-2">To</span>
-          <input type="month" class="input input-bordered focus:outline-none" v-model="toMonth">
+          <input type="month" class="input input-bordered focus:outline-none" v-model="toMonth" disabled>
         </label>
       </div> <!-- end flex container -->
       <div class="mt-5 flex flex-col sm:flex-row justify-around items-center">
